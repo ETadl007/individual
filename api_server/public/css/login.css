@@ -1,0 +1,80 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.box{
+    width: 90%;
+    height: 90%;
+    margin: 50px auto;
+    box-shadow: 1px 2px 10px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.ball {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right,#69EACB 0%, #EACCF8 48%,#6654F1 100%);
+    animation: Qiu 3s forwards;
+    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2);
+    filter: brightness(1.2);
+    box-sizing:content-box;
+    margin-left: 10%;
+}
+@keyframes Qiu {
+    from {
+        transform: scale(0.5) translateY(-30%);
+    }
+    to {
+        transform: scale(1.5) translateY(30%);
+    }
+}
+.box-con{
+    width: 100%;
+    padding: 30px;
+    position: relative;
+}
+.login-h4{
+    margin-bottom: 20px;
+}
+.login-max{
+    max-width: 100%;
+    filter:drop-shadow(1px 2px 3px rgba(0,0,0,0.1));
+}
+.regis{
+    max-width: 100%;
+    filter:drop-shadow(1px 2px 3px rgba(0,0,0,0.1));
+}
+.w-btn{
+    width: 100%;
+    padding: 25px 0 30px 0;
+}
+small{
+    float: right;
+    max-width: 100%;
+}
+small > a{
+    color: black;
+    display: inline-block;
+    text-decoration: none;
+}
+small a:hover{
+    color: #0d6efd;
+}
+.blquo{
+    width: 400px;
+    height: 400px;
+    top: 23%;
+    right: 13%;
+    position: absolute;
+}
+.inp-color{
+    background-color: transparent;
+    font-size: 14px;
+    color: #b2bec0
+}
