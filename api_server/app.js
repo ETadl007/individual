@@ -6,8 +6,6 @@ const path = require('path')
 //创建 express 的服务器实例
 const app = express()
 
-
-
 //导入 cors 的中间件
 const cors = require('cors')
 
@@ -16,7 +14,6 @@ app.use(cors())
 
 //解析表单数据的中间件
 app.use(express.urlencoded({extended:false}))
-
 app.use(function (req, res, next) {
     // status = 0 为成功； status = 1 为失败； 默认将 status 的值设置为 1，方便处理失败的情况
     res.cc = function (err, status = 1) {
@@ -62,6 +59,7 @@ app.use(function (err, req, res, next) {
 
 //导入注册用户模块
 const userRouter = require('./router/user')
+const bodyParser = require('body-parser')
 app.use('/api',userRouter)
 
 //调用 app.listen 方法，指定端口号并启动web服务器

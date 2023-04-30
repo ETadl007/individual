@@ -1,17 +1,22 @@
-html,body,div,span,ul{
+html,body,div,span,ul,section,h3,input{
     margin: 0;
     padding: 0;
 }
 body{
     font: 14px '微软雅黑';
+    background-color: #333;
 }
 li{
     list-style: none;
 }
+small{
+    color: white;
+}
 #header{
     width: 100%;
     height: 70px;
-    position: fixed;
+    box-shadow: 1px 0px 50px rgba(255, 255, 255, 0.05);
+    z-index: 999;
     top: 0;
     left: 0;
     right: 0;
@@ -48,7 +53,7 @@ li{
     display: block;
 }
 .list{
-    width: 360px;
+    width: auto;
     height: 70px;
     margin: 0px 50px;
     float: left;
@@ -56,7 +61,7 @@ li{
     display: block;
 }
 .list>li{
-    width: 60px;
+    width: 100px;
     height: 60px;
     float: left;
     list-style: none;
@@ -69,7 +74,6 @@ a{
     height: 50px;
     color: white;
     font-size: 14px;
-    text-align: center;
     display: block;
     line-height: 75px;
     padding: 5px 5px;
@@ -93,7 +97,7 @@ a{
 .search{
     position: absolute;
     top: 56%;
-    left: 85%;
+    left: 75%;
     transform: translate(-50%,-50%);
     height: 35px;
     border-radius: 40px;
@@ -102,9 +106,7 @@ a{
     border: none;
     background: none;
     outline: none;
-    float: left;
     color: #fff;
-
     font-size: 14px;
     line-height: 35px;
     width: 0;
@@ -130,7 +132,7 @@ a{
     align-items: center;
 }
 .search:hover .search-text{
-    padding: 0 35px 0 5px;
+    padding: 0 35px 0 15px;
     width: 160px;
     border: 1px solid #ccc;
     border-radius: 40px;
@@ -143,13 +145,13 @@ a{
     margin-right: 20px;
 }
 .login .login-menu{
-    width: 150px;
+    width: 260px;
     height: 70px;
 }
 .login .login-menu li{
     position: relative;
     float: left;
-    width: 60px;
+    width: 100px;
     line-height: 75px;
     height: 60px;
     display: block;
@@ -157,7 +159,6 @@ a{
 .login .login-menu li>a{
     height: 50px;
     color: white;
-    text-align: center;
     padding: 5px 5px;
     display: block;
 }
@@ -188,12 +189,300 @@ a{
     width: 100%;
     height: 650px;
 }
+.options{
+    width: 1300px;
+    height: 550px;
+    margin: 0 auto;
+}
+.joinus{
+    position: fixed;
+    top: 80%;
+    right: 0;
+    float: right;
+    width: 150px;
+    height: auto;
+}
+.joinus ul{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    float: right;
+    cursor: pointer;
+}
+.joinus ul li{
+    width: 60px;
+    height: 60px;
+    float: right;
+}
+.joinus ul li img{
+    position: absolute;
+    top: 0;
+    right: 0%;
+    width: 60px;
+    height: 60px;
+}
+.qqwechat{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 240px;
+    height: auto;
+    cursor: pointer;
+    z-index: 999;
+    display: none;
+}
+.qqwechat img{
+    float: left;
+}
+.joinus ul:hover + .qqwechat{
+    display: block;
+}
+.qqwechat:hover{
+    display: block;
+}
+.ml-2{
+    margin-left: 32px;
+}
+.mt-3{
+    margin-top: 30px;
+}
+.pl-1{
+    padding-left: 15px;
+}
+.pr-1{
+    padding-right: 15px;
+}
+.pl-pr-1{
+    padding: 0 15px;
+}
+.pt-2{
+    padding-top: 20px;
+}
+.mt-5{
+    margin-top: 80px;
+}
+.itme{
+    width: 100%;
+    height: 50px;
+}
+.itme small{
+    line-height: 50px;
+}
+.itme-link{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+.oPcontainer{
+    width: 100%;
+    height: 500px;
+}
+.ldynamic{
+    width: 740px;
+    height: 270px;
+    float: left;
+}
+.flex-container{
+    width: 790px;
+    height: 500px;
+}
+.flex-row{
+    display: flex;  
+    align-items: center;
+    flex-flow: wrap;
+}  
+.flex-item{
+    width: 245px;
+    height: 200px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid white;
+}
+.flex-container .flex-row .flex-item p{
+    font-size: 16px;
+    color: white;
+}
+.rdynamic{
+    width: 450px;
+    height: 500px;
+    float: right;
+}
+.sidebar{
+    width: 450px;
+    height: 501px;
+    font-size: 0;
+    border-radius: 4px;
+}
+.sidebar-latest{
+    width: 100%;
+    height: 70px;
+    font-size: 0;
+    background-color: #333;
+}
+.sidebar .sidebar-latest h3{
+    width: 100px;
+    display: block;
+    color: white;
+    font-size: 20px;
+    line-height: 70px;
+    float: left;
+}
+.sidebar .sidebar-latest a{
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    float: right;
+}
+.sidebar .sidebar-latest a:hover{
+    text-decoration: underline;
+    color:#d9a1fc;
+}
+.sidebar .latest-list{
+    position: relative;
+    height: 429px;
+}
+.sidebar .latest-list ul{
+    width: 100%;
+    height: auto;
+}
+.sidebar .latest-list ul li,
+.sidebar .latest-list ul li a{
+    height: 50px;
+    color: white;
+    font-size: 14px;
+    line-height: 50px;
+}
+.sidebar .latest-list ul li a:hover{
+    color: #d9a1fc;
+}
+.sidebar .latest-list ul li span{
+    height: 50px;
+    color: white;
+    font-size: 14px;
+    line-height: 50px;
+}
+.send-dynamics{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+}
+.inpSend{
+    position: relative;
+    width: 420px;
+    height: 50px;
+    color: white;
+    padding: 0 0 0 30px;
+    border-radius: 4px;
+    border: 1px solid rgb(135, 135, 135);
+    background-color: transparent;
+}
+.inpSend:hover{
+    border-radius: 4px;
+}
+.btn{
+    position: absolute;
+    top: 1px;
+    right: 0;
+    width: 70px;
+    height: 50px;
+    z-index: -999;
+}
+.btn-grey{
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 0;
+    background-color: #333;
+}
+.btn-grey:hover{
+    animation: test 1s both;
+}
+.essay{
+    width: 1300px;
+    height: 780px;
+    margin: 0 auto;
+}
+.essay-container{
+    width: 100%;
+    height: 730px;
+}
+.essay-list{
+    width: 100%;
+    height: 300px;
+    border-radius: 4px;
+}
+.essay-date{
+    display: inline;
+}
+@keyframes border{
+    from{
+        border: 1px solid rgba(0, 0, 0, 0);
+    }
+    to{
+        border: 1px solid rgba(255, 255, 255, 1);
+    }
+}
+.essay-list:hover{
+    animation: border 1s both;
+}
+.rlistImg{
+    width: 520px;
+    height: 300px;
+    float: left;
+}
+.rmenu{
+    width: 780px;
+    height: 300px;
+    float: right;
+}
+.rmenu h3{
+    color: white;
+    font-size: 25px;
+}
+.item-essay{
+    display: block;
+    width: 700px;
+    color: white;
+    font-size: 16px;
+}
+.rmenu a{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 4px;
+    display: block;
+}
+@keyframes test{
+    from{
+        background-color: #333
+    }
+    to{
+        color: black;
+        background-color: white
+    }
+}
+.rmenu a:hover{
+    color: white;
+    animation: test 1s;
+    animation-fill-mode: both;
+}
+.rmenu small{
+    color: white;
+}
 .footer{
     width: 100%;
-    height: 90px;
+    height: auto;
 }
 .footer-content{
     width: 100%;
-    height: 90px;
-    background-color: #6c757d;
+    height: auto;
+}
+.footer-content p{
+    text-align: center;
+    color: white;
 }

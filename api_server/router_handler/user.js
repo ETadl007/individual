@@ -37,10 +37,10 @@ exports.regUser = (req, res) =>{
             }
             //sql 语句执行成功，但不影响行数
             if(results.affectedRows !== 1){
-                return res.send({ status: 1, message: '注册用户失败，请稍后再试！' })
+                return res.send('注册用户失败，请稍后再试！')
             }
             //注册成功
-            res.send({ status: 0, message: '注册成功！' })
+            return res.send({sta:1})
         })
     })
 }
@@ -74,7 +74,8 @@ exports.login = (req, res) =>{
             status: 0,
             message: '登录成功！',
             // 为了方便客户端使用 Token，在服务器端直接拼接上 Bearer 的前缀
-            token: 'Bearer ' + tokenStr,
+            token:  tokenStr,
+            username:userinfo.username
           })
     })
 }
