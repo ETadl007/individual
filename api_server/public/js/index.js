@@ -109,21 +109,19 @@ $(function(){
 
 
  $(function(){
-
     const name = localStorage.getItem('username')
-    console.log(name);
     if(!name){
         $('.nameout').hide()
         $('.loginSegister').show()
         $('.logout').hide()
         $('html').hide()
 
-        let a = confirm("非法登录，请登录后再试！！")
-        if (a === true) {
-            location.href = '../page/login.html'
-        }else{
+        // let a = confirm("非法登录，请登录后再试！！")
+        // if (a === true) {
+        //     location.href = '../page/login.html'
+        // }else{
             location.href = '../../../index.html'
-        }
+        // }
         
     }else{
         $('.loginSegister').hide()
@@ -139,3 +137,4 @@ $('.logout').click(function(){
     $('.loginSegister').show()
     $('.logout').hide()
 })
+
