@@ -114,7 +114,7 @@ $(function(){
         $('.nameout').hide()
         $('.loginSegister').show()
         $('.logout').hide()
-        $('html').hide()
+        // $('html').hide()
 
         // let a = confirm("非法登录，请登录后再试！！")
         // if (a === true) {
