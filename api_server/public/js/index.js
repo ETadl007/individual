@@ -120,7 +120,7 @@ $(function(){
         // if (a === true) {
         //     location.href = '../page/login.html'
         // }else{
-            location.href = '../../../index.html'
+            // location.href = '../../../index.html'
         // }
         
     }else{
