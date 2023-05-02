@@ -50,7 +50,6 @@ app.use(function (req, res, next) {
 // 错误中间件
 app.use(function (err, req, res, next) {
     // 省略其它代码...
-  
     // 捕获身份认证失败的错误
     if (err.name === 'UnauthorizedError') return res.cc('身份认证失败！')
   

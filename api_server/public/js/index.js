@@ -54,7 +54,6 @@ $(function(){
     url:"http://127.0.0.1/api/index.html",
     success:function(res){
         let data = ''
-        let box = ''
         let date = new Date();
         let month = date.getMonth()+1;           
         for (let i = 0; i < res.length; i++) {
