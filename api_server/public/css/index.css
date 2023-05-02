@@ -201,6 +201,7 @@ a{
     float: right;
     width: 150px;
     height: auto;
+    z-index: 999;
 }
 .joinus ul{
     position: relative;
