@@ -10,7 +10,7 @@ const joi = require('joi')
  */
 
 //用户名注册规则
-const username = joi.string().alphanum().min(1).max(10).required()
+const username = joi.string().min(1).max(10).required()
 //密码注册规则
 const password = joi.string().pattern(/^[\S]{1,12}$/).required()
 

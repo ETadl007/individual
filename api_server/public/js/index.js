@@ -27,6 +27,25 @@ let scrollFunc = function (e) {
 document.addEventListener('DOMMouseScroll', scrollFunc, false);
 document.onmousewheel = scrollFunc; 
 
+function time() {
+    let date = new Date()
+    let year = date.getFullYear();
+    let month =(date.getMonth() + 1).toString();
+    let day = (date.getDate()).toString();
+    let hours = date.getHours().toString();
+    let time = date.getMinutes().toString();
+    if  (month.length == 1) {
+        month =  "0"  + month;
+    }
+    if  (day.length == 1) {
+        day =  "0"  + day;
+    }
+    if  (time.length == 1) {
+        time =  "0"  + time;
+    }
+    const dateTime = year +  "-"  + month +  "-"  + day + "-" + hours + ":" + time;
+    return dateTime
+}
 function btns() {
     let username = $("#dybtn").val()
     if (username === '' || username === null) {
@@ -39,7 +58,8 @@ function btns() {
                 username: username
             },
             success:function(res){
-               alert(res)
+                rights()
+                alert(res)
                 location.href = "../page/index.html"
             }
 
@@ -47,25 +67,23 @@ function btns() {
     }
 }
 
-//右侧的动态
-$(function(){
+
+// 右侧的动态
+function rights(){
     $.ajax({
     method:'get',
     url:"http://127.0.0.1/api/index.html",
     success:function(res){
-        let data = ''
-        let date = new Date();
-        let month = date.getMonth()+1;           
+        let data = ''          
         for (let i = 0; i < res.length; i++) {
             data += '<li class="pl-1"><a href="javascript:;" style="float:left">' + res[i]["dynamics"] + 
-            '</a>' + '<span style="float:right" class="pr-1">' + 
-            date.getFullYear() + '-' + month + '-'+ date.getDate() + ' ' + date.getHours() + ':'  + date.getMinutes() + '</span></li>';
+            '</a></li>'
             $('.data').html(data) 
         }
     }
     })
-})
-
+}
+rights()
 //左侧的动态
 $(function(){
     $.ajax({
@@ -97,10 +115,7 @@ $(function(){
                 datas += '<p class="item-essay">' + res[i]["essay"] + '</p>';
                 $('.evtow-essay').html(datas)
             }
-            const date = new Date().getFullYear() + "-" + (new Date().getMonth() + 1) + "-" + new Date().getDate()
-            localStorage.setItem('date', JSON.stringify(date))
-            const postDate = JSON.parse(window.localStorage.getItem('date'))
-            $('.essay-date').html(postDate)
+            $('.essay-date').html(time())
         }
     }
     })
@@ -113,14 +128,13 @@ $(function(){
         $('.nameout').hide()
         $('.loginSegister').show()
         $('.logout').hide()
-        // $('html').hide()
-
-        // let a = confirm("非法登录，请登录后再试！！")
-        // if (a === true) {
-        //     location.href = '../page/login.html'
-        // }else{
-            // location.href = '../../../index.html'
-        // }
+        $('html').hide()
+        let a = confirm("非法登录，请登录后再试！！")
+        if (a === true) {
+            location.href = '../page/login.html'
+        }else{
+            location.href = '../../../index.html'
+        }
         
     }else{
         $('.loginSegister').hide()

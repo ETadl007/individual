@@ -16,6 +16,8 @@ const { reg_login_schema } = require('../schema/user')
 router.post('/reguser',expressJoi(reg_login_schema),userHandler.regUser)
 //登录
 router.post('/login',expressJoi(reg_login_schema),userHandler.login)
+//密码重置接口
+router.post('/resetpwd',userHandler.resetpwd)
 //动态的数据添加
 router.post('/sendDynamics',dynsmics.senddy)
 //动态的数据查询

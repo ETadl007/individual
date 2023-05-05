@@ -8,18 +8,12 @@ exports.senddy = (req, res) =>{
     // 定义sql语句
     const select = 'select * from sdynamics where dynamics=?'
     db.query(select, [userinfo.username], (err,results)=>{
-        //查询动态记录是否被占用
-        if (results.length > 0) {
-            return res.send("发送失败！！") 
-        }else{
-            const inserts = 'insert into sdynamics(dynamics) values(?)'
-            const sql = 'SELECT NOW()'
-            db.query(inserts, userinfo.username, (err, results)=>{
-                if(err) res.cc(err) 
-                return res.send("发送成功！！")   
-            })
-        }
-    }) 
+        const inserts = 'insert into sdynamics(dynamics) values(?)'
+        db.query(inserts, userinfo.username, (err, results)=>{
+            if(err) res.cc(err) 
+            return res.send("发送成功！！")
+        })
+    })
 }
 
 exports.indexData = (req, res) =>{

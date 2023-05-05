@@ -13,17 +13,17 @@ exports.regUser = (req, res) =>{
     const userinfo = req.body
     //对表单的数据进行效验
     if (!userinfo.username || !userinfo.password) {
-        return res.send('用户名或密码不能为空！')
+        return res.cc('用户名或密码不能为空！')
     }
     //查询用户名是否被占用
     const sqlStr = 'select * from ev_users where username=?'
     db.query(sqlStr, [userinfo.username], (err,results)=>{
         //执行 sql 语句失败
         if(err){
-            return res.send({status:1, message:err.message})
+            return res.cc({status:1, message:err.message})
         } 
         if(results.length > 0){
-            return res.send('用户名被占用，请更换其他用户名')
+            return res.cc('用户名被占用，请更换其他用户名')
         }
         //调用bcrypt对密码加密
         userinfo.password = bcrypt.hashSync(userinfo.password, 10)
@@ -33,14 +33,14 @@ exports.regUser = (req, res) =>{
         db.query(sql, {username:userinfo.username,password:userinfo.password}, (err,results)=>{
             //执行 sql 语句失败
             if(err) {
-                return res.send({status:1, message:err.message})
+                return res.cc({status:1, message:err.message})
             }
             //sql 语句执行成功，但不影响行数
             if(results.affectedRows !== 1){
-                return res.send('注册用户失败，请稍后再试！')
+                return res.cc('注册用户失败，请稍后再试！')
             }
             //注册成功
-            return res.send({sta:1})
+            return res.send({status:0,message:'注册成功'})
         })
     })
 }
@@ -54,16 +54,13 @@ exports.login = (req, res) =>{
         //执行sql 语句
         if(err) res.cc(err)
         //执行 sql 语句成功，但是查询数据条不等于1
-        if(results.length !== 1) return res.cc('登录失败')
-
+        if(results.length !== 1) return res.cc('用户名或密码错误')
         //拿着用户输入的密码，和数据库的密码进行对比
         const comparRrsults = bcrypt.compareSync(userinfo.password ,results[0].password)
-
         //如果对比的结果等于 false ，则证明用户输入的密码错误
         if(!comparRrsults){
-            return res.cc('登录失败!')
+            return res.cc('登录失败')
         }
-
         // 剔除完毕之后，user 中只保留了用户的 id, username, nickname, email 这四个属性的值
         const user = { ...results[0], password: '', user_pic: '' }
         // 生成 Token 字符串
@@ -77,5 +74,25 @@ exports.login = (req, res) =>{
             token:  tokenStr,
             username:userinfo.username
           })
+    })
+}
+
+exports.resetpwd = (req, res) =>{
+    //接收表单数据
+    const userinfo = req.body
+    const select = 'select * from ev_users where username=?'
+    userinfo.password = bcrypt.hashSync(userinfo.password, 10)
+    db.query(select, [userinfo.username], (err,results)=>{
+        if(err){
+            return res.cc({status:1, message:err.message})
+        }
+        if(results.length > 0){
+            const update =  `update ev_users set password=? where username='${userinfo.username}'`
+            db.query(update, [userinfo.password], (err,results)=>{
+                return res.cc('重置成功')
+            })
+        }else{
+            return res.cc('用户名不存在')
+        }
     })
 }
